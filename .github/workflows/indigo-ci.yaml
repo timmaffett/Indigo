@@ -130,7 +130,7 @@ jobs:
           path: dist/*.nupkg
 
   test_indigo_python_x86_64:
-    timeout-minutes: 30
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -174,7 +174,7 @@ jobs:
           check_name: "${{ matrix.os }}_python_test_report"
 
   test_indigo_java_x86_64:
-    timeout-minutes: 30
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -213,7 +213,7 @@ jobs:
           check_name: "${{ matrix.os }}_java_test_report"
 
   test_indigo_dotnet_x86_64:
-    timeout-minutes: 30
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:

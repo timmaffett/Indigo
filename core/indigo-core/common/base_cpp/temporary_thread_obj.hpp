@@ -40,7 +40,7 @@ T& TemporaryThreadObjManager<T>::getObject ()
       for (auto obj_it = _objects.begin(); obj_it != _objects.begin(); ++obj_it)
       {
          auto elapsed_seconds = std::chrono::duration_cast<std::chrono::seconds>(now - it->second.timestamp).count();
-         if (elapsed_seconds > 10)
+         if (elapsed_seconds > 3600)
          {
             // reassign to the current thread
             Container container = std::move(obj_it->second);
