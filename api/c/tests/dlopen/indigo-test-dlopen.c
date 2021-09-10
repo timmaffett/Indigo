@@ -25,6 +25,7 @@ typedef int (*INT_RET_INT_INT)(int, int);
 typedef int (*INT_RET_STR_STR)(const char*, const char*);
 typedef int (*INT_RET_STR_STR_STR)(const char*, const char*, const char*);
 typedef int (*INT_RET_INT)(int);
+typedef void (*VOID_RET_PTR)(char*);
 
 /* Try to dynamically load library and check load status. */
 HANDLE dlOpenWithCheck(const char* libraryPath)
@@ -55,6 +56,8 @@ int main(int argc, char** argv)
     HANDLE bingoHandle;
 
     STR_RET_VOID indigoVersion;
+    INT_RET_INT indigoFree;
+    VOID_RET_PTR indigoFreeArrayCharPointer;
     INT_RET_STR indigoLoadReactionFromString;
     INT_RET_STR indigoLoadMoleculeFromString;
     STR_RET_VOID indigoGetLastError;
@@ -119,11 +122,14 @@ int main(int argc, char** argv)
         printf("Indigo version: %s\n", indigoVersion());
         indigoLoadReactionFromString = (INT_RET_STR)DLSYM(indigoHandle, "indigoLoadReactionFromString");
         indigoGetLastError = (STR_RET_VOID)DLSYM(indigoHandle, "indigoGetLastError");
+        indigoFree = (INT_RET_INT)DLSYM(indigoHandle, "indigoFree");
+        indigoFreeArrayCharPointer = (VOID_RET_PTR)DLSYM(indigoHandle, "indigoFreeArrayCharPointer");
         r = indigoLoadReactionFromString("C");
         if (r < 0)
         {
             printf("Error handled: %s\n", indigoGetLastError());
         }
+        indigoFree(r);
     }
     if (indigoInChITest)
     {
@@ -139,7 +145,10 @@ int main(int argc, char** argv)
         indigoInchiGetInchi = (STR_RET_INT)DLSYM(indigoInChIHandle, "indigoInchiGetInchi");
         indigoLoadMoleculeFromString = (INT_RET_STR)DLSYM(indigoHandle, "indigoLoadMoleculeFromString");
         m = indigoLoadMoleculeFromString("C");
-        printf("indigoInChI InChI: %s\n", indigoInchiGetInchi(m));
+        char* inchi = indigoInchiGetInchi(m);
+        printf("indigoInChI InChI: %s\n", inchi);
+        indigoFree(m);
+        indigoFreeArrayCharPointer(inchi);
     }
     if (indigoRendererTest)
     {
