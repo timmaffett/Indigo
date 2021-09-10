@@ -2387,6 +2387,8 @@ class Indigo(object):
         Indigo._lib.indigoGetLastError.argtypes = None
         Indigo._lib.indigoFree.restype = c_int
         Indigo._lib.indigoFree.argtypes = [c_int]
+        Indigo._lib.indigoFreeArrayCharPointer.restype = None
+        Indigo._lib.indigoFreeArrayCharPointer.argtypes = [c_char_p]
         Indigo._lib.indigoCountReferences.restype = c_int
         Indigo._lib.indigoCountReferences.argtypes = None
         Indigo._lib.indigoFreeAllObjects.restype = c_int
@@ -3428,6 +3430,11 @@ class Indigo(object):
 
     def _checkResultString(self, result):
         return self._checkResultPtr(result).decode(DECODE_ENCODING)
+
+    def _checkResultStringAndFree(self, result):
+        checked_result = self._checkResultPtr(result).decode(DECODE_ENCODING)
+        Indigo._lib.indigoFreeArrayCharPointer(result)
+        return checked_result
 
     def convertToArray(self, iteratable):
         if isinstance(iteratable, IndigoObject):

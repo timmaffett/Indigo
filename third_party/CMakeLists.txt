@@ -15,7 +15,7 @@ if (BUILD_INDIGO OR BUILD_INDIGO_UTILS)
             add_subdirectory(cairo)
         endif()
     endif()
-endif ()
+endif()
 if (EMSCRIPTEN)
     # Required for base64 encoding
     add_subdirectory(cppcodec)

@@ -76,6 +76,8 @@ CEXPORT const char* indigoGetLastError(void);
 typedef void (*INDIGO_ERROR_HANDLER)(const char* message, void* context);
 CEXPORT void indigoSetErrorHandler(INDIGO_ERROR_HANDLER handler, void* context);
 
+CEXPORT void indigoFreeArrayCharPointer(char* pointer);
+
 // Free an object
 CEXPORT int indigoFree(int handle);
 // Clone an object

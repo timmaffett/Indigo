@@ -18,6 +18,8 @@
 
 #include "molecule/inchi_wrapper.h"
 
+#include <base_cpp/array_char_holder.h>
+
 #include "indigo_internal.h"
 #include "indigo_molecule.h"
 
@@ -144,9 +146,10 @@ CEXPORT const char* indigoInchiGetInchi(int molecule)
         InchiWrapper& inchi_wrapper = indigoInchiGetInstance().inchi;
         IndigoObject& obj = self.getObject(molecule);
 
-        auto& tmp = self.getThreadTmpData();
-        inchi_wrapper.saveMoleculeIntoInchi(obj.getMolecule(), tmp.string);
-        return tmp.string.ptr();
+        auto* array = new Array<char>();
+        inchi_wrapper.saveMoleculeIntoInchi(obj.getMolecule(), *array);
+        ArrayCharHolder::add(array);
+        return array->ptr();
     }
     INDIGO_END(0);
 }

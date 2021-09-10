@@ -78,7 +78,7 @@ class IndigoInchi(object):
 
     def getInchi(self, molecule):
         self.indigo._setSessionId()
-        return self.indigo._checkResultString(self._lib.indigoInchiGetInchi(molecule.id))
+        return self.indigo._checkResultStringAndFree(self._lib.indigoInchiGetInchi(molecule.id))
 
     def getInchiKey(self, inchi):
         self.indigo._setSessionId()

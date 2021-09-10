@@ -211,6 +211,13 @@ CEXPORT int indigoFree(int handle)
     return 1;
 }
 
+#include <base_cpp/array_char_holder.h>
+
+CEXPORT void indigoFreeArrayCharPointer(char* pointer)
+{
+    ArrayCharHolder::remove(pointer);
+}
+
 CEXPORT int indigoFreeAllObjects()
 {
     indigoGetInstance().removeAllObjects();
