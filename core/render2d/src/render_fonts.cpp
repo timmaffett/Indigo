@@ -55,7 +55,6 @@ void RenderContext::fontsClear()
 
 void RenderContext::fontsInit()
 {
-    fontsDispose();
     fontOptions = cairo_font_options_create();
     cairoCheckStatus();
     cairo_font_options_set_antialias(fontOptions, CAIRO_ANTIALIAS_GRAY);
