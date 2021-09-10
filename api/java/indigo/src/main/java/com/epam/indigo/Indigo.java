@@ -125,6 +125,13 @@ public class Indigo {
         return result.getString(0);
     }
 
+    public static String checkResultStringAndFree(Object obj, Pointer result) {
+        if (result == Pointer.NULL) throw new IndigoException(obj, lib.indigoGetLastError());
+        String result_string = result.getString(0);
+        lib.indigoFreeArrayCharPointer(result);
+        return result_string;
+    }
+
     public static Pointer checkResultPointer(Object obj, Pointer result) {
         if (result == Pointer.NULL) throw new IndigoException(obj, lib.indigoGetLastError());
 

@@ -13,7 +13,7 @@ SMILES_LIST = [
     'CCCCCC',
     'CCCCCCC',
     'CCCCCCCC',
-]
+] * 10
 
 
 def render(smiles):
@@ -25,7 +25,7 @@ def render(smiles):
     return buff.tobytes()
 
 
-with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
     futures_dict = {
         executor.submit(render, smiles): smiles
         for smiles in SMILES_LIST

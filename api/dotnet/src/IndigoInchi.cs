@@ -49,7 +49,7 @@ namespace com.epam.indigo
         public String getInchi(IndigoObject molecule)
         {
             _indigo.setSessionID();
-            return _indigo.checkResult(IndigoInchiLib.indigoInchiGetInchi(molecule.self));
+            return _indigo.checkResultAndFree(IndigoInchiLib.indigoInchiGetInchi(molecule.self));
         }
 
         public String getInchiKey(String inchi_string)

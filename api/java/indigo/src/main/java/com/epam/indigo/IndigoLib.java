@@ -37,6 +37,8 @@ public interface IndigoLib extends Library {
 
     int indigoFree(int handle);
 
+    void indigoFreeArrayCharPointer(Pointer pointer);
+
     int indigoClone(int handle);
 
     int indigoCountReferences();

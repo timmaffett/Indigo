@@ -27,6 +27,9 @@ namespace com.epam.indigo
         public static extern int indigoFree(int id);
 
         [DllImport("indigo"), SuppressUnmanagedCodeSecurity]
+        public static extern void indigoFreeArrayCharPointer(sbyte* pointer);
+
+        [DllImport("indigo"), SuppressUnmanagedCodeSecurity]
         public static extern int indigoClone(int id);
 
         [DllImport("indigo"), SuppressUnmanagedCodeSecurity]

@@ -184,6 +184,20 @@ namespace com.epam.indigo
             return _sbyteToStringUTF8(result);
         }
 
+        public string checkResultAndFree(sbyte* result)
+        {
+            if (result == null)
+            {
+                throw new IndigoException(_sbyteToStringUTF8(IndigoLib.indigoGetLastError()));
+            }
+
+            string string_result = _sbyteToStringUTF8(result);
+
+            IndigoLib.indigoFreeArrayCharPointer(result);
+
+            return string_result;
+        }
+
         public float* checkResult(float* result)
         {
             if (result == null)

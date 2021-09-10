@@ -55,7 +55,7 @@ public class IndigoInchi {
 
     public String getInchi(IndigoObject molecule) {
         indigo.setSessionID();
-        return Indigo.checkResultString(this, lib.indigoInchiGetInchi(molecule.self));
+        return Indigo.checkResultStringAndFree(this, lib.indigoInchiGetInchi(molecule.self));
     }
 
     public String getInchiKey(String inchi) {
