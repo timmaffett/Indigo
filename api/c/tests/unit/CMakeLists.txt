@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.4)
+cmake_minimum_required(VERSION 3.13)
 
 project(indigo-api-unit-tests LANGUAGES CXX)
 
