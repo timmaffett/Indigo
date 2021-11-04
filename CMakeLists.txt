@@ -2,7 +2,7 @@ if(WIN32)
     set(CMAKE_SYSTEM_VERSION 6.1)
 endif()
 
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.4)
 
 project(indigo-all LANGUAGES NONE)
 

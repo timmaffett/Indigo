@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.4)
 
 if(POLICY CMP0068)
     # https://cmake.org/cmake/help/v3.9/policy/CMP0068.html
