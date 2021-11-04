@@ -116,7 +116,7 @@ jobs:
           run: |
             apt-get update
             apt-get upgrade -y
-            apt-get install -y gcc g++ make git libfreetype6-dev libfontconfig1-dev
+            apt-get install -y cmake gcc g++ make git libfreetype6-dev libfontconfig1-dev
             mkdir build
             cd build
             cmake .. -DBUILD_INDIGO=ON -DBUILD_INDIGO_WRAPPERS=OFF -DBUILD_INDIGO_UTILS=OFF -DBUILD_BINGO=OFF -DBUILD_BINGO_ELASTIC=OFF
