@@ -115,7 +115,7 @@ jobs:
           githubToken: ${{ github.token }}
           run: |
             apt-get update
-            apg-get upgrade -y
+            apt-get upgrade -y
             apt-get install -y gcc g++ make git libfreetype6-dev libfontconfig1-dev
             mkdir build
             cd build
