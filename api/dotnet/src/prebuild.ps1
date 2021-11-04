@@ -3,6 +3,7 @@ function copyOrTouchIfNotExists ([String]  ${srcLibRoot}, [String] ${libPath}, [
     ${destPath} = ${destPath}.replace("windows", "win")
     ${destPath} = ${destPath}.replace("x86_64/", "x64/native/")
     ${destPath} = ${destPath}.replace("i386/", "x86/native/")
+    ${destPath} = ${destPath}.replace("aarch64/", "arm64/native/")
 
     ${srcPath} = "${srcLibRoot}/${libPath}"
     ${destPath} = "${destLibRoot}/${destPath}"
